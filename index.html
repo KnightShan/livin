@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LIVYN</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #ffffff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .top-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      width: 100%;
+      padding-bottom: 40px;
+    }
+
+    .coming-soon {
+      font-size: 20px;
+      letter-spacing: 0.28em;
+      color: #1a1a1a;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    .brand {
+      font-size: 65px;
+      letter-spacing: 0.35em;
+      color: #0d0d0d;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .ticker-wrap {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .ticker-row {
+      display: flex;
+      white-space: nowrap;
+      animation: ticker-scroll 18s linear infinite;
+      padding: 10px 0 6px;
+    }
+
+    .ticker-row:nth-child(2) {
+      animation-direction: reverse;
+      animation-duration: 22s;
+    }
+
+    .ticker-item {
+      font-size: 30px;
+      letter-spacing: 0.22em;
+      color: #d61010bb;
+      font-weight: 400;
+      text-transform: uppercase;
+      padding-right: 2.2em;
+      user-select: none;
+    }
+
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-section">
+    <p class="coming-soon">Coming Soon</p>
+    <h1 class="brand">L I V Y N</h1>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker-row" id="row1"></div>
+    <div class="ticker-row" id="row2"></div>
+    <div class="ticker-row" id="row3"></div>
+  </div>
+
+  <script>
+    const text = "L I V Y N L I V Y N L I V Y N L I V Y N";
+    const repeat = 6;
+
+    function fillRow(id) {
+      const row = document.getElementById(id);
+      let content = '';
+      for (let i = 0; i < repeat * 2; i++) {
+        content += `<span class="ticker-item">${text}</span>`;
+      }
+      row.innerHTML = content;
+    }
+
+    fillRow('row1');
+    fillRow('row2');
+    fillRow('row3');
+  </script>
+</body>
+</html>
